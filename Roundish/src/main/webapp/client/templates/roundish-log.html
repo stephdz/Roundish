@@ -1,0 +1,8 @@
+<div class="rd-logs">
+	<div ng-repeat="log in logs" class="alert alert-dismissable" ng-class="'alert-'+log.level.class" ng-show="log.shown" aria-hidden="{{log.shown}}">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true" ng-click="close(log)" >&times;</button>
+		<div class="rd-log-title">{{log.message}}</div>
+		<div class="rd-log-toggle-details" ng-click="toggleDetails(log)" ng-show="hasDetails(log)">Details<!-- TODO Localize it --></div>
+		<pre class="rd-log-details" ng-show="log.showDetails">{{log.details}}</pre>
+	</div> 
+</div>

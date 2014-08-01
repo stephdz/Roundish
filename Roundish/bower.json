@@ -1,0 +1,29 @@
+{
+  "name": "Roundish",
+  "version": "1.0.0",
+  "description": "Roundish",
+  "main": "src/main/javascript/client/roundish.js",
+  "keywords": [
+    "rest",
+    "angular",
+    "roundish"
+  ],
+  "authors": [
+    "Stéphane DESHIERE"
+  ],
+  "license": "GPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-route": "~1.2.16",
+    "angular-resource": "~1.2.16",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1"
+  }
+}

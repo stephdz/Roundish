@@ -1,0 +1,17 @@
+/**
+ * Roundish log module CSS
+ */
+
+.rd-logs .rd-log-title {
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.rd-logs .rd-log-toggle-details {
+	cursor: pointer;
+}
+
+.rd-logs .rd-log-toggle-details:hover {
+	text-decoration: underline;
+}

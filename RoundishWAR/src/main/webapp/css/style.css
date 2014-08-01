@@ -1,0 +1,30 @@
+
+body {
+    background-color: #7ca4a3;
+}
+
+.container {
+    background-color: #FFF;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: solid 1px #888;
+    border-width: 0 1px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.25);
+}
+
+.jumbotron {
+    margin-bottom: 40px;
+    background-color: #F4F4F4;
+}
+
+h1 {
+    font-family: 'Roboto Slab', sans-serif;
+    color: #A2D39F !important;
+}
+
+h2 {
+    margin-bottom: 24px;
+    color: #A43E41 !important;
+
+}

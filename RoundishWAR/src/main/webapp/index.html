@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="todos">
+<head>
+	<title>TODOs - Simple todo-list with Roundish</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="TODOs - Simple todo-list with Roundish">
+	<meta name="keywords" content="AngularJS, REST, Roundish">
+	<meta name="author" content="Stéphane DESHIERE">
+	<meta charset="UTF-8">
+	
+	<!-- 
+	 TODO Improve includes :
+	  - unable to use a directive (needs Angular and Roundish to be included => poor interest)
+	  - unable to use requirejs (need to disable angular autobootstrap and to use an additional plugin - domReady -)
+	 ==> use a 'homemade' loading tool ?
+	-->
+	
+	<!-- Roundish JS -->
+	<script type="text/javascript" src="roundish/lib/jquery.js"></script>
+	<script type="text/javascript" src="roundish/lib/angular.js"></script>
+	<script type="text/javascript" src="roundish/lib/bootstrap.js"></script>
+	<script type="text/javascript" src="roundish/roundish.js"></script>
+	
+	<!-- Roundish CSS -->
+	<link href="roundish/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link href="roundish/css/roundish.css" rel="stylesheet" type="text/css"/>
+		
+	<!-- Application JS -->	
+	<script type="text/javascript" src="js/todos.js"></script>
+	
+	<!-- Application CSS -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'/>
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<div ng-controller="MainController" class="container">
+		<div class="jumbotron">
+			<h1>
+				TODOs <span class="glyphicon glyphicon-check pull-right"></span>
+			</h1>
+			<p class="text-muted">Simple todo-list with Roundish</p>
+		</div>
+		<rd-logs></rd-logs>
+		<div ng-show="logged != null">
+			<p class="pull-right">Logged as {{logged.login}} <a href="#!" ng-click="logout()">Logout</a></p>
+		</div>
+		<div ng-view></div>
+	</div>
+</body>
+</html>

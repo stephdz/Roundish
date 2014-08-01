@@ -1,0 +1,60 @@
+app.js -> roundish/roundish.js -> roundish/roundish-log.js -> roundish/lib/angular.js
+                                                           -> roundish/lib/bootstrap.js -> roundish/lib/jquery.js
+														   
+index.html :
+<script type="text/javascript" rd-app="app.js" src="roundish/roundish.js" /> => MUST GET THE BASE URL FROM ROUNDISH.JS
+
+app.js :
+application('app.js',['roundish/roundish.js']/*JS libraries*/, ['roundish']/*Angular modules*/);
+
+app-config.js :
+module('app-config.js',['app.js'], function(app){
+	app.config(function ($routeProvider, $locationProvider, $rdConfigProvider) {
+		...
+	});
+});
+
+app-resources.js :
+module('app-resources.js',['app-config.js'], function(app){
+	app.factory('Todo', ['$rdRest', function ($rdRest) {
+	    return $rdRest.repository('todos');
+	}]);
+});
+
+app-controllers.js :
+module('app-controllers.js',['app.js','app-resources.js'], function(app){
+	app.controller('MainController', ['$scope', '$location', '$rdAuth', function ($scope, $location, $rdAuth) {
+		...
+	});
+	
+	app.controller('LoginController', ['$scope', '$location', '$rdAuth', function ($scope, $location, $rdAuth) {
+		...
+	});
+	
+	...
+});
+
+roundish.js :
+library('roundish.js',['roundish-log.js', 'roundish-auth.js', etc...], function() {
+	...
+});
+
+roundish-angular.js:
+library('angular.js',[], function() {
+	...
+});
+
+roundish-bootstrap.js:
+library('bootstrap.js',['jquery.js'], function() {
+	...
+});
+
+roundish-jquery.js:
+library('jquery.js',[], function() {
+	...
+});
+
+roundish-log.js :
+library('roundish-log.js',['lib/angular.js', 'lib/bootstrap.js'], function() {
+	...
+});
