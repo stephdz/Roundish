@@ -1,4 +1,7 @@
 target/
+bower_components/
+node_modules/
+target-grunt/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.next
