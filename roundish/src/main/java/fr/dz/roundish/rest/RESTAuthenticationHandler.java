@@ -18,7 +18,6 @@ import fr.dz.roundish.User;
 import fr.dz.roundish.rest.model.LoginInfo;
 import fr.dz.roundish.util.JsonUtils;
 
-
 /**
  * REST authentication handler
  */
@@ -27,90 +26,94 @@ import fr.dz.roundish.util.JsonUtils;
 @Singleton
 @Path("auth")
 public class RESTAuthenticationHandler extends RESTHandler {
-		
-	// Constants
-	private static final String CONNECTED_USER = "roundish.connectedUser";
 
-	/**
-	 * Constructor
-	 * @param application
-	 */
-	public RESTAuthenticationHandler(Application application) {
-		super(application);
-	}
-	
-	/*
-	 * Real definition used by Application
-	 */
-	@Override
-	public User getConnectedUser() {
-		return (User) getRequest().getSession().getAttribute(CONNECTED_USER);
-	}
+    // Constants
+    private static final String CONNECTED_USER = "roundish.connectedUser";
 
-	/**
-	 * Return the connected user
-	 * @param loginInfoJson
-	 * @return
-	 */
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response connectedUser() {
-		try {
-			return handleEntity(getConnectedUser());
-		} catch(Throwable t) {
-			return handleException(t);
-		}
+    /**
+     * Constructor
+     * 
+     * @param application
+     */
+    public RESTAuthenticationHandler(final Application application) {
+	super(application);
+    }
+
+    /*
+     * Real definition used by Application
+     */
+    @Override
+    public User getConnectedUser() {
+	return (User) getRequest().getSession().getAttribute(CONNECTED_USER);
+    }
+
+    /**
+     * Return the connected user
+     * 
+     * @param loginInfoJson
+     * @return
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response connectedUser() {
+	try {
+	    return handleEntity(getConnectedUser());
+	} catch (Throwable t) {
+	    return handleException(t);
 	}
-	
-	/**
-	 * Perform user login
-	 * @param loginInfoJson
-	 * @return
-	 */
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response login(String loginInfoJson) {
-		try {
-			
-			// Do the login
-			LoginInfo loginInfo = JsonUtils.convertToEntity(loginInfoJson, LoginInfo.class);
-			User loggedUser = getApplication().login(loginInfo.getLogin(), loginInfo.getPassword());
-			if ( loggedUser != null ) {
-				log.debug("User '"+loginInfo.getLogin()+"' successfully connected");
-				
-				// Enforce to create a JSESSIONID and register the connected user
-				HttpSession session = getRequest().getSession();
-				session.setAttribute(CONNECTED_USER, loggedUser);
-			} else {
-				log.debug("User '"+loginInfo.getLogin()+"' failed to connect");
-			}
-			
-			// Return the user
-			return handleEntity(loggedUser);
-		} catch(Throwable t) {
-			return handleException(t);
-		}
+    }
+
+    /**
+     * Perform user login
+     * 
+     * @param loginInfoJson
+     * @return
+     */
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response login(final String loginInfoJson) {
+	try {
+
+	    // Do the login
+	    LoginInfo loginInfo = JsonUtils.convertToEntity(loginInfoJson, LoginInfo.class);
+	    User loggedUser = getApplication().login(loginInfo.getLogin(), loginInfo.getPassword());
+	    if (loggedUser != null) {
+		log.debug("User '" + loginInfo.getLogin() + "' successfully connected");
+
+		// Enforce to create a JSESSIONID and register the connected
+		// user
+		HttpSession session = getRequest().getSession();
+		session.setAttribute(CONNECTED_USER, loggedUser);
+	    } else {
+		log.debug("User '" + loginInfo.getLogin() + "' failed to connect");
+	    }
+
+	    // Return the user
+	    return handleEntity(loggedUser);
+	} catch (Throwable t) {
+	    return handleException(t);
 	}
-	
-	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response logout() {
-		try {
-			
-			// Do the logout
-			User loggedUser = getConnectedUser();
-			getApplication().logout(getRequest());
-			if ( loggedUser != null ) {
-				log.debug("User '"+loggedUser.getLogin()+"' successfully disconnected");
-			}
-			
-			// Clear the session
-			getRequest().getSession().invalidate();
-			
-			return Response.status(Response.Status.NO_CONTENT).build();
-		} catch(Throwable t) {
-			return handleException(t);
-		}
+    }
+
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response logout() {
+	try {
+
+	    // Do the logout
+	    User loggedUser = getConnectedUser();
+	    getApplication().logout(getRequest());
+	    if (loggedUser != null) {
+		log.debug("User '" + loggedUser.getLogin() + "' successfully disconnected");
+	    }
+
+	    // Clear the session
+	    getRequest().getSession().invalidate();
+
+	    return Response.status(Response.Status.OK).build();
+	} catch (Throwable t) {
+	    return handleException(t);
 	}
+    }
 }

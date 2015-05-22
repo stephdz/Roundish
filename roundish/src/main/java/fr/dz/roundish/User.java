@@ -6,16 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-
 /**
  * Describe a user
  */
 @Getter
 @AllArgsConstructor
-@EqualsAndHashCode(of="login")
+@EqualsAndHashCode(of = "login")
 public class User {
-	private String login;
-	private String password;
-	private String fullName;
-	private Locale locale;
+    private final String login;
+    private final String password;
+    private final String fullName;
+    private final Locale locale;
 }

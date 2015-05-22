@@ -2,19 +2,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>Roundish</groupId>
-		<artifactId>RoundishParent</artifactId>
+		<groupId>roundish</groupId>
+		<artifactId>roundish-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
-	<artifactId>RoundishWAR</artifactId>
+	<artifactId>roundish-war</artifactId>
 	<packaging>war</packaging>
 	<name>Roundish Test WAR</name>
 	<description>Roundish Test WAR</description>
 	<dependencies>
 		<dependency>
-			<groupId>Roundish</groupId>
-			<artifactId>Roundish</artifactId>
+			<groupId>roundish</groupId>
+			<artifactId>roundish</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

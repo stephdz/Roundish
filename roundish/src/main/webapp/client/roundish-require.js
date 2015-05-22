@@ -1,5 +1,6 @@
 /**
  * Roundish Require utility (not an Angular module)
+ * TODO To be deprecated => use browserify instead
  */
 
 /**

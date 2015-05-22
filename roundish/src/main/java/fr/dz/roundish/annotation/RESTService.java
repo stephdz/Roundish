@@ -8,16 +8,15 @@ import java.lang.annotation.Target;
 
 import javax.ws.rs.HttpMethod;
 
-
 /**
  * Annotation for Roundish service
  */
-@Target({ElementType.TYPE})
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @HttpMethod(HttpMethod.GET)
 @Documented
 public @interface RESTService {
-	/**
+    /**
      * Specifies the path to HTTP repository.
      */
     String value();

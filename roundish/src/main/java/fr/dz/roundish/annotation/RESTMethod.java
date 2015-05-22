@@ -8,14 +8,13 @@ import java.lang.annotation.Target;
 
 import javax.ws.rs.HttpMethod;
 
-
 /**
  * Annotation for Roundish custom methods
  */
-@Target({ElementType.METHOD})
+@Target({ ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @HttpMethod(HttpMethod.GET)
 @Documented
 public @interface RESTMethod {
-	
+
 }

@@ -8,16 +8,15 @@ import java.lang.annotation.Target;
 
 import javax.ws.rs.HttpMethod;
 
-
 /**
  * Annotation for Roundish custom methods parameters
  */
-@Target({ElementType.PARAMETER})
+@Target({ ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 @HttpMethod(HttpMethod.GET)
 @Documented
 public @interface RESTParameter {
-	/**
+    /**
      * Specifies the name of the parameter.
      */
     String value();
